@@ -1,0 +1,32 @@
+steps:
+  # Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/prompting', '--no-cache', '.']
+
+  # Push to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/prompting']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'prompting'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/prompting'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-central1'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '512Mi'
+      - '--port'
+      - '8080'
+      - '--timeout'
+      - '60'
+
+options:
+  machineType: 'E2_HIGHCPU_8'

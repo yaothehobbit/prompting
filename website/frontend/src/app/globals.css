@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #22223a;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --accent-claude: #d97706;
+  --accent-gemini: #4285f4;
+  --accent-grok: #1da1f2;
+  --accent-chatgpt: #10a37f;
+  --accent-deepseek: #7c3aed;
+  --accent-cli: #22c55e;
+  --border-color: #2a2a3e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+/* Code blocks */
+pre {
+  background: #0d1117 !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+code {
+  font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+/* Tab indicator animation */
+.tab-active {
+  position: relative;
+}
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Comparison table */
+.comparison-table th {
+  background: var(--bg-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Tip cards */
+.tip-card {
+  border-left: 3px solid;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: 0 8px 8px 0;
+  margin: 12px 0;
+}
+
+.tip-do { border-color: #22c55e; }
+.tip-dont { border-color: #ef4444; }
+.tip-info { border-color: #3b82f6; }
