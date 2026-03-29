@@ -1,7 +1,7 @@
 steps:
   # Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/prompting', '--no-cache', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/prompting', '--no-cache', '-f', 'website/Dockerfile', '.']
 
   # Push to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
